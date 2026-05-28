@@ -13,6 +13,10 @@ import os
 import time
 from typing import Any, Callable
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 # ---------------------------------------------------------------------------
 # Estimated costs per 1M INPUT & OUTPUT tokens (USD) as of March 2026
 # Vietnamese text generally consumes ~1.5x - 2.0x more tokens than English due to Unicode/diacritics.
@@ -237,6 +241,23 @@ def compare_models(prompt: str) -> dict:
     }
 
 
+# def run_temperature_sensitivity_demo(prompt: str | None = None) -> None:
+#     """Run the temperature sensitivity demo for the required exercise prompt."""
+#     if prompt is None:
+#         prompt = "Hãy kể cho tôi một sự thật thú vị về Việt Nam."
+
+#     print("Running temperature sensitivity demo for OpenAI:")
+#     for temp in [0.0, 0.5, 1.0, 1.5]:
+#         text, latency, usage = call_openai(prompt, temperature=temp)
+#         print(f"temperature = {temp}")
+#         print(text)
+#         print("usage =", usage)
+#         print("-" * 40)
+
+
+# def main() -> None:
+#     run_temperature_sensitivity_demo()
+
 
 # ---------------------------------------------------------------------------
 # Task 5 — Streaming chatbot with Gemini 2.5 (Focus Model)
@@ -440,3 +461,7 @@ def format_comparison_table(results: list[dict]) -> str:
             )
             
     return "\n".join(table_lines)
+
+
+# if __name__ == "__main__":
+#     main()
